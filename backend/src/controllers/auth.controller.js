@@ -1,6 +1,11 @@
 
-export async function registerUser(req , res) {
+export async function registerUser(req , res , next) {
 
-    throw new Error("encounter an error while registering new user")
+    try {
+        throw new Error("encounter an error while registering new user")
+    } catch (error) {
+        error.status = 400
+        next(error)
+    }
 
 }
